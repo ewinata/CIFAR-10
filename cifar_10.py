@@ -6,7 +6,6 @@ from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dropout, Dense, Flatten, BatchNormalization, Activation
 from tensorflow.keras.datasets import cifar10
 from tensorflow.keras.optimizers import SGD
-from sklearn.model_selection import KFold
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.callbacks import LearningRateScheduler
 from tensorflow.keras.regularizers import l2
@@ -21,43 +20,47 @@ def load_data():
     return trainX, trainY, testX, testY
 
 def define_model(length_label):
+    '''
+    Good starting loss: -ln(0.1) = 2.3026
+    '''
     model = Sequential()
     weight_decay = 1e-5
 
     #Stage 1 2D-Convolution
-    model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', \
+    model.add(Conv2D(32, (3, 3), activation='elu', kernel_initializer='he_uniform', \
                 kernel_regularizer=l2(weight_decay), input_shape=(32, 32, 3), padding="same"))
     model.add(BatchNormalization())
-    model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', \
+    model.add(Conv2D(32, (3, 3), activation='elu', kernel_initializer='he_uniform', \
                 kernel_regularizer=l2(weight_decay)))
     model.add(BatchNormalization())
     model.add(MaxPooling2D(pool_size = (2, 2)))
     model.add(Dropout(0.2))
     
     #Stage 2 2D-Convolution
-    model.add(Conv2D(64, (3, 3), activation='relu', kernel_initializer='he_uniform', \
+    model.add(Conv2D(64, (3, 3), activation='elu', kernel_initializer='he_uniform', \
                 kernel_regularizer=l2(weight_decay), padding="same"))
     model.add(BatchNormalization())
-    model.add(Conv2D(64, (3, 3), activation='relu', kernel_initializer='he_uniform', \
-                kernel_regularizer=l2(weight_decay), padding="same"))
+    model.add(Conv2D(64, (3, 3), activation='elu', kernel_initializer='he_uniform', \
+                kernel_regularizer=l2(weight_decay)))
     model.add(BatchNormalization())
     model.add(MaxPooling2D(pool_size = (2, 2)))
     model.add(Dropout(0.25))
 
     #Stage 3 2D-Convolution
-    model.add(Conv2D(128, (3, 3), activation='relu', kernel_initializer='he_uniform', \
+    model.add(Conv2D(128, (3, 3), activation='elu', kernel_initializer='he_uniform', \
                 kernel_regularizer=l2(weight_decay), padding="same"))
     model.add(BatchNormalization())
-    model.add(Conv2D(128, (3, 3), activation='relu', kernel_initializer='he_uniform', \
-                kernel_regularizer=l2(weight_decay), padding="same"))
+    model.add(Conv2D(128, (3, 3), activation='elu', kernel_initializer='he_uniform', \
+                kernel_regularizer=l2(weight_decay)))
     model.add(BatchNormalization())
+    model.add(MaxPooling2D(pool_size = (2, 2)))
     model.add(Dropout(0.3))
 
     #Stage 1 Dense layer
     model.add(Flatten())
-    model.add(Dense(1024, kernel_initializer='he_uniform'))
+    model.add(Dense(512, kernel_initializer='he_uniform'))
     model.add(BatchNormalization())
-    model.add(Activation('relu'))
+    model.add(Activation('elu'))
     model.add(Dropout(0.5))
 
     # output layer
@@ -86,7 +89,7 @@ def prepare_data(trainX):
     datagen = ImageDataGenerator(width_shift_range=0.1, \
         rotation_range=45, height_shift_range=0.1, horizontal_flip=True)
     datagen.fit(trainX)
-    return trainX
+    return datagen
 
 def summarize_diagnostics(history):
 	# plot loss
@@ -100,22 +103,22 @@ def summarize_diagnostics(history):
 	pyplot.plot(history.history['accuracy'], color='blue', label='train')
 	pyplot.plot(history.history['val_accuracy'], color='orange', label='test')
 	# save plot to file
-	filename = sys.argv[0].split('/')[-1]
-	pyplot.savefig(filename + 'final_plot.png')
+	pyplot.savefig('final_plot_dataAug.png')
 	pyplot.close()
 
 def main():
     trainX, trainY, testX, testY = load_data()
-    trainX = prepare_data(trainX)
+    datagen = prepare_data(trainX)
 
     trained_model = define_model(10)
-    history = trained_model.fit(trainX, trainY, epochs=125, batch_size=32, validation_data=(testX, testY), verbose=2, callbacks=[LearningRateScheduler(get_lr)])
+    history = trained_model.fit_generator(datagen.flow(trainX, trainY, batch_size=64), epochs=150, validation_data=(testX, testY), verbose=1, callbacks=[LearningRateScheduler(get_lr)])
     _, acc = trained_model.evaluate(testX, testY, verbose=0)
-    print('> %.3f' % (acc * 100.0))
+    print('\n\n>Final Accuracy of Trained Model: %.3f' % (acc * 100.0))
+
+    # save model
+    trained_model.save('cifar10_final_dataAug.h5')
 
     summarize_diagnostics(history)
 
-    # save model
-    trained_model.save('cifar10_final.h5')
 
 main()
