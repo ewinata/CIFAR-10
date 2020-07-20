@@ -1,0 +1,830 @@
+Model: "WResNet20"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_3 (InputLayer)            [(None, 32, 32, 3)]  0                                            
+__________________________________________________________________________________________________
+conv_s1_b1 (Conv2D)             (None, 32, 32, 128)  3584        input_3[0][0]                    
+__________________________________________________________________________________________________
+batchN_s1_b1 (BatchNormalizatio (None, 32, 32, 128)  512         conv_s1_b1[0][0]                 
+__________________________________________________________________________________________________
+conv_s2_b1a (Conv2D)            (None, 32, 32, 128)  147584      batchN_s1_b1[0][0]               
+__________________________________________________________________________________________________
+batchN_s2_b1a (BatchNormalizati (None, 32, 32, 128)  512         conv_s2_b1a[0][0]                
+__________________________________________________________________________________________________
+dropout_18 (Dropout)            (None, 32, 32, 128)  0           batchN_s2_b1a[0][0]              
+__________________________________________________________________________________________________
+conv_s2_b1b (Conv2D)            (None, 32, 32, 128)  147584      dropout_18[0][0]                 
+__________________________________________________________________________________________________
+batchN_s2_b1b (BatchNormalizati (None, 32, 32, 128)  512         conv_s2_b1b[0][0]                
+__________________________________________________________________________________________________
+add_18 (Add)                    (None, 32, 32, 128)  0           batchN_s2_b1b[0][0]              
+                                                                 batchN_s1_b1[0][0]               
+__________________________________________________________________________________________________
+activation_18 (Activation)      (None, 32, 32, 128)  0           add_18[0][0]                     
+__________________________________________________________________________________________________
+conv_s2_b2a (Conv2D)            (None, 32, 32, 128)  147584      activation_18[0][0]              
+__________________________________________________________________________________________________
+batchN_s2_b2a (BatchNormalizati (None, 32, 32, 128)  512         conv_s2_b2a[0][0]                
+__________________________________________________________________________________________________
+dropout_19 (Dropout)            (None, 32, 32, 128)  0           batchN_s2_b2a[0][0]              
+__________________________________________________________________________________________________
+conv_s2_b2b (Conv2D)            (None, 32, 32, 128)  147584      dropout_19[0][0]                 
+__________________________________________________________________________________________________
+batchN_s2_b2b (BatchNormalizati (None, 32, 32, 128)  512         conv_s2_b2b[0][0]                
+__________________________________________________________________________________________________
+add_19 (Add)                    (None, 32, 32, 128)  0           batchN_s2_b2b[0][0]              
+                                                                 activation_18[0][0]              
+__________________________________________________________________________________________________
+activation_19 (Activation)      (None, 32, 32, 128)  0           add_19[0][0]                     
+__________________________________________________________________________________________________
+conv_s2_b3a (Conv2D)            (None, 32, 32, 128)  147584      activation_19[0][0]              
+__________________________________________________________________________________________________
+batchN_s2_b3a (BatchNormalizati (None, 32, 32, 128)  512         conv_s2_b3a[0][0]                
+__________________________________________________________________________________________________
+dropout_20 (Dropout)            (None, 32, 32, 128)  0           batchN_s2_b3a[0][0]              
+__________________________________________________________________________________________________
+conv_s2_b3b (Conv2D)            (None, 32, 32, 128)  147584      dropout_20[0][0]                 
+__________________________________________________________________________________________________
+batchN_s2_b3b (BatchNormalizati (None, 32, 32, 128)  512         conv_s2_b3b[0][0]                
+__________________________________________________________________________________________________
+add_20 (Add)                    (None, 32, 32, 128)  0           batchN_s2_b3b[0][0]              
+                                                                 activation_19[0][0]              
+__________________________________________________________________________________________________
+activation_20 (Activation)      (None, 32, 32, 128)  0           add_20[0][0]                     
+__________________________________________________________________________________________________
+zero_padding2d_4 (ZeroPadding2D (None, 34, 34, 128)  0           activation_20[0][0]              
+__________________________________________________________________________________________________
+conv_s3_b1a (Conv2D)            (None, 16, 16, 256)  295168      zero_padding2d_4[0][0]           
+__________________________________________________________________________________________________
+batchN_s3_b1a (BatchNormalizati (None, 16, 16, 256)  1024        conv_s3_b1a[0][0]                
+__________________________________________________________________________________________________
+dropout_21 (Dropout)            (None, 16, 16, 256)  0           batchN_s3_b1a[0][0]              
+__________________________________________________________________________________________________
+conv_s3_b1b (Conv2D)            (None, 16, 16, 256)  590080      dropout_21[0][0]                 
+__________________________________________________________________________________________________
+conv_s3_b1c (Conv2D)            (None, 16, 16, 256)  295168      zero_padding2d_4[0][0]           
+__________________________________________________________________________________________________
+batchN_s3_b1b (BatchNormalizati (None, 16, 16, 256)  1024        conv_s3_b1b[0][0]                
+__________________________________________________________________________________________________
+batchN_s3_b1c (BatchNormalizati (None, 16, 16, 256)  1024        conv_s3_b1c[0][0]                
+__________________________________________________________________________________________________
+add_21 (Add)                    (None, 16, 16, 256)  0           batchN_s3_b1b[0][0]              
+                                                                 batchN_s3_b1c[0][0]              
+__________________________________________________________________________________________________
+activation_21 (Activation)      (None, 16, 16, 256)  0           add_21[0][0]                     
+__________________________________________________________________________________________________
+conv_s3_b2a (Conv2D)            (None, 16, 16, 256)  590080      activation_21[0][0]              
+__________________________________________________________________________________________________
+batchN_s3_b2a (BatchNormalizati (None, 16, 16, 256)  1024        conv_s3_b2a[0][0]                
+__________________________________________________________________________________________________
+dropout_22 (Dropout)            (None, 16, 16, 256)  0           batchN_s3_b2a[0][0]              
+__________________________________________________________________________________________________
+conv_s3_b2b (Conv2D)            (None, 16, 16, 256)  590080      dropout_22[0][0]                 
+__________________________________________________________________________________________________
+batchN_s3_b2b (BatchNormalizati (None, 16, 16, 256)  1024        conv_s3_b2b[0][0]                
+__________________________________________________________________________________________________
+add_22 (Add)                    (None, 16, 16, 256)  0           batchN_s3_b2b[0][0]              
+                                                                 activation_21[0][0]              
+__________________________________________________________________________________________________
+activation_22 (Activation)      (None, 16, 16, 256)  0           add_22[0][0]                     
+__________________________________________________________________________________________________
+conv_s3_b3a (Conv2D)            (None, 16, 16, 256)  590080      activation_22[0][0]              
+__________________________________________________________________________________________________
+batchN_s3_b3a (BatchNormalizati (None, 16, 16, 256)  1024        conv_s3_b3a[0][0]                
+__________________________________________________________________________________________________
+dropout_23 (Dropout)            (None, 16, 16, 256)  0           batchN_s3_b3a[0][0]              
+__________________________________________________________________________________________________
+conv_s3_b3b (Conv2D)            (None, 16, 16, 256)  590080      dropout_23[0][0]                 
+__________________________________________________________________________________________________
+batchN_s3_b3b (BatchNormalizati (None, 16, 16, 256)  1024        conv_s3_b3b[0][0]                
+__________________________________________________________________________________________________
+add_23 (Add)                    (None, 16, 16, 256)  0           batchN_s3_b3b[0][0]              
+                                                                 activation_22[0][0]              
+__________________________________________________________________________________________________
+activation_23 (Activation)      (None, 16, 16, 256)  0           add_23[0][0]                     
+__________________________________________________________________________________________________
+zero_padding2d_5 (ZeroPadding2D (None, 18, 18, 256)  0           activation_23[0][0]              
+__________________________________________________________________________________________________
+conv_s4_b1a (Conv2D)            (None, 8, 8, 512)    1180160     zero_padding2d_5[0][0]           
+__________________________________________________________________________________________________
+batchN_s4_b1a (BatchNormalizati (None, 8, 8, 512)    2048        conv_s4_b1a[0][0]                
+__________________________________________________________________________________________________
+dropout_24 (Dropout)            (None, 8, 8, 512)    0           batchN_s4_b1a[0][0]              
+__________________________________________________________________________________________________
+conv_s4_b1b (Conv2D)            (None, 8, 8, 512)    2359808     dropout_24[0][0]                 
+__________________________________________________________________________________________________
+conv_s4_b1c (Conv2D)            (None, 8, 8, 512)    1180160     zero_padding2d_5[0][0]           
+__________________________________________________________________________________________________
+batchN_s4_b1b (BatchNormalizati (None, 8, 8, 512)    2048        conv_s4_b1b[0][0]                
+__________________________________________________________________________________________________
+batchN_s4_b1c (BatchNormalizati (None, 8, 8, 512)    2048        conv_s4_b1c[0][0]                
+__________________________________________________________________________________________________
+add_24 (Add)                    (None, 8, 8, 512)    0           batchN_s4_b1b[0][0]              
+                                                                 batchN_s4_b1c[0][0]              
+__________________________________________________________________________________________________
+activation_24 (Activation)      (None, 8, 8, 512)    0           add_24[0][0]                     
+__________________________________________________________________________________________________
+conv_s4_b2a (Conv2D)            (None, 8, 8, 512)    2359808     activation_24[0][0]              
+__________________________________________________________________________________________________
+batchN_s4_b2a (BatchNormalizati (None, 8, 8, 512)    2048        conv_s4_b2a[0][0]                
+__________________________________________________________________________________________________
+dropout_25 (Dropout)            (None, 8, 8, 512)    0           batchN_s4_b2a[0][0]              
+__________________________________________________________________________________________________
+conv_s4_b2b (Conv2D)            (None, 8, 8, 512)    2359808     dropout_25[0][0]                 
+__________________________________________________________________________________________________
+batchN_s4_b2b (BatchNormalizati (None, 8, 8, 512)    2048        conv_s4_b2b[0][0]                
+__________________________________________________________________________________________________
+add_25 (Add)                    (None, 8, 8, 512)    0           batchN_s4_b2b[0][0]              
+                                                                 activation_24[0][0]              
+__________________________________________________________________________________________________
+activation_25 (Activation)      (None, 8, 8, 512)    0           add_25[0][0]                     
+__________________________________________________________________________________________________
+conv_s4_b3a (Conv2D)            (None, 8, 8, 512)    2359808     activation_25[0][0]              
+__________________________________________________________________________________________________
+batchN_s4_b3a (BatchNormalizati (None, 8, 8, 512)    2048        conv_s4_b3a[0][0]                
+__________________________________________________________________________________________________
+dropout_26 (Dropout)            (None, 8, 8, 512)    0           batchN_s4_b3a[0][0]              
+__________________________________________________________________________________________________
+conv_s4_b3b (Conv2D)            (None, 8, 8, 512)    2359808     dropout_26[0][0]                 
+__________________________________________________________________________________________________
+batchN_s4_b3b (BatchNormalizati (None, 8, 8, 512)    2048        conv_s4_b3b[0][0]                
+__________________________________________________________________________________________________
+add_26 (Add)                    (None, 8, 8, 512)    0           batchN_s4_b3b[0][0]              
+                                                                 activation_25[0][0]              
+__________________________________________________________________________________________________
+activation_26 (Activation)      (None, 8, 8, 512)    0           add_26[0][0]                     
+__________________________________________________________________________________________________
+avg_pool (AveragePooling2D)     (None, 1, 1, 512)    0           activation_26[0][0]              
+__________________________________________________________________________________________________
+flatten_2 (Flatten)             (None, 512)          0           avg_pool[0][0]                   
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 10)           5130        flatten_2[0][0]                  
+==================================================================================================
+Total params: 18,619,402
+Trainable params: 18,606,858
+Non-trainable params: 12,544
+__________________________________________________________________________________________________
+
+Epoch 00001: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 1/165
+391/391 [==============================] - 80s 203ms/step - loss: 4.1569 - accuracy: 0.2863 - val_loss: 3.7401 - val_accuracy: 0.3020 - lr: 0.1000
+
+Epoch 00002: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 2/165
+391/391 [==============================] - 78s 200ms/step - loss: 3.2826 - accuracy: 0.4351 - val_loss: 3.6363 - val_accuracy: 0.3509 - lr: 0.1000
+
+Epoch 00003: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 3/165
+391/391 [==============================] - 78s 200ms/step - loss: 2.7845 - accuracy: 0.5450 - val_loss: 2.9243 - val_accuracy: 0.4730 - lr: 0.1000
+
+Epoch 00004: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 4/165
+391/391 [==============================] - 78s 200ms/step - loss: 2.3774 - accuracy: 0.6272 - val_loss: 2.9590 - val_accuracy: 0.4545 - lr: 0.1000
+
+Epoch 00005: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 5/165
+391/391 [==============================] - 78s 200ms/step - loss: 2.0482 - accuracy: 0.6903 - val_loss: 2.0354 - val_accuracy: 0.6783 - lr: 0.1000
+
+Epoch 00006: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 6/165
+391/391 [==============================] - 78s 199ms/step - loss: 1.7812 - accuracy: 0.7394 - val_loss: 1.9569 - val_accuracy: 0.6821 - lr: 0.1000
+
+Epoch 00007: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 7/165
+391/391 [==============================] - 78s 199ms/step - loss: 1.5706 - accuracy: 0.7738 - val_loss: 1.9482 - val_accuracy: 0.6655 - lr: 0.1000
+
+Epoch 00008: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 8/165
+391/391 [==============================] - 78s 200ms/step - loss: 1.4137 - accuracy: 0.7991 - val_loss: 1.5678 - val_accuracy: 0.7469 - lr: 0.1000
+
+Epoch 00009: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 9/165
+391/391 [==============================] - 78s 200ms/step - loss: 1.2802 - accuracy: 0.8152 - val_loss: 1.6861 - val_accuracy: 0.7067 - lr: 0.1000
+
+Epoch 00010: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 10/165
+391/391 [==============================] - 79s 201ms/step - loss: 1.1797 - accuracy: 0.8287 - val_loss: 1.1823 - val_accuracy: 0.8201 - lr: 0.1000
+
+Epoch 00011: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 11/165
+391/391 [==============================] - 78s 201ms/step - loss: 1.0919 - accuracy: 0.8385 - val_loss: 1.1608 - val_accuracy: 0.8152 - lr: 0.1000
+
+Epoch 00012: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 12/165
+391/391 [==============================] - 78s 201ms/step - loss: 1.0132 - accuracy: 0.8518 - val_loss: 1.1572 - val_accuracy: 0.8068 - lr: 0.1000
+
+Epoch 00013: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 13/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.9493 - accuracy: 0.8590 - val_loss: 1.3631 - val_accuracy: 0.7550 - lr: 0.1000
+
+Epoch 00014: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 14/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.9067 - accuracy: 0.8636 - val_loss: 1.8000 - val_accuracy: 0.6700 - lr: 0.1000
+
+Epoch 00015: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 15/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.8796 - accuracy: 0.8650 - val_loss: 1.0440 - val_accuracy: 0.8113 - lr: 0.1000
+
+Epoch 00016: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 16/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.8251 - accuracy: 0.8766 - val_loss: 1.0786 - val_accuracy: 0.8016 - lr: 0.1000
+
+Epoch 00017: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 17/165
+391/391 [==============================] - 79s 202ms/step - loss: 0.7885 - accuracy: 0.8819 - val_loss: 0.9872 - val_accuracy: 0.8262 - lr: 0.1000
+
+Epoch 00018: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 18/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.7657 - accuracy: 0.8849 - val_loss: 0.8948 - val_accuracy: 0.8511 - lr: 0.1000
+
+Epoch 00019: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 19/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.7303 - accuracy: 0.8919 - val_loss: 0.9031 - val_accuracy: 0.8414 - lr: 0.1000
+
+Epoch 00020: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 20/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.7155 - accuracy: 0.8952 - val_loss: 1.0283 - val_accuracy: 0.8108 - lr: 0.1000
+
+Epoch 00021: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 21/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.6957 - accuracy: 0.8988 - val_loss: 0.9422 - val_accuracy: 0.8383 - lr: 0.1000
+
+Epoch 00022: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 22/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.6769 - accuracy: 0.9013 - val_loss: 0.9099 - val_accuracy: 0.8246 - lr: 0.1000
+
+Epoch 00023: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 23/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.6683 - accuracy: 0.9045 - val_loss: 0.8697 - val_accuracy: 0.8468 - lr: 0.1000
+
+Epoch 00024: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 24/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.6578 - accuracy: 0.9075 - val_loss: 0.7999 - val_accuracy: 0.8625 - lr: 0.1000
+
+Epoch 00025: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 25/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.6508 - accuracy: 0.9086 - val_loss: 1.1250 - val_accuracy: 0.7905 - lr: 0.1000
+
+Epoch 00026: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 26/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.6493 - accuracy: 0.9089 - val_loss: 1.1507 - val_accuracy: 0.7856 - lr: 0.1000
+
+Epoch 00027: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 27/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.6410 - accuracy: 0.9117 - val_loss: 0.7554 - val_accuracy: 0.8807 - lr: 0.1000
+
+Epoch 00028: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 28/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.6330 - accuracy: 0.9129 - val_loss: 0.8205 - val_accuracy: 0.8698 - lr: 0.1000
+
+Epoch 00029: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 29/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.6235 - accuracy: 0.9183 - val_loss: 0.7601 - val_accuracy: 0.8725 - lr: 0.1000
+
+Epoch 00030: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 30/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.6175 - accuracy: 0.9175 - val_loss: 0.8903 - val_accuracy: 0.8509 - lr: 0.1000
+
+Epoch 00031: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 31/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.6119 - accuracy: 0.9226 - val_loss: 0.7654 - val_accuracy: 0.8722 - lr: 0.1000
+
+Epoch 00032: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 32/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.6081 - accuracy: 0.9221 - val_loss: 0.7989 - val_accuracy: 0.8724 - lr: 0.1000
+
+Epoch 00033: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 33/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.6115 - accuracy: 0.9226 - val_loss: 0.7985 - val_accuracy: 0.8726 - lr: 0.1000
+
+Epoch 00034: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 34/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.6106 - accuracy: 0.9241 - val_loss: 1.0782 - val_accuracy: 0.8045 - lr: 0.1000
+
+Epoch 00035: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 35/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.6072 - accuracy: 0.9253 - val_loss: 0.8262 - val_accuracy: 0.8663 - lr: 0.1000
+
+Epoch 00036: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 36/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.5979 - accuracy: 0.9294 - val_loss: 0.8797 - val_accuracy: 0.8552 - lr: 0.1000
+
+Epoch 00037: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 37/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5984 - accuracy: 0.9290 - val_loss: 1.0149 - val_accuracy: 0.8417 - lr: 0.1000
+
+Epoch 00038: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 38/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.6028 - accuracy: 0.9272 - val_loss: 0.7612 - val_accuracy: 0.8845 - lr: 0.1000
+
+Epoch 00039: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 39/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.6012 - accuracy: 0.9291 - val_loss: 0.7734 - val_accuracy: 0.8811 - lr: 0.1000
+
+Epoch 00040: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 40/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5998 - accuracy: 0.9297 - val_loss: 0.8854 - val_accuracy: 0.8581 - lr: 0.1000
+
+Epoch 00041: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 41/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5948 - accuracy: 0.9325 - val_loss: 0.8220 - val_accuracy: 0.8642 - lr: 0.1000
+
+Epoch 00042: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 42/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5922 - accuracy: 0.9349 - val_loss: 0.7701 - val_accuracy: 0.8834 - lr: 0.1000
+
+Epoch 00043: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 43/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5995 - accuracy: 0.9324 - val_loss: 0.7875 - val_accuracy: 0.8767 - lr: 0.1000
+
+Epoch 00044: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 44/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.5970 - accuracy: 0.9319 - val_loss: 0.7838 - val_accuracy: 0.8868 - lr: 0.1000
+
+Epoch 00045: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 45/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5929 - accuracy: 0.9354 - val_loss: 1.1343 - val_accuracy: 0.8182 - lr: 0.1000
+
+Epoch 00046: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 46/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5917 - accuracy: 0.9360 - val_loss: 0.7871 - val_accuracy: 0.8870 - lr: 0.1000
+
+Epoch 00047: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 47/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.5880 - accuracy: 0.9371 - val_loss: 0.8243 - val_accuracy: 0.8734 - lr: 0.1000
+
+Epoch 00048: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 48/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.5911 - accuracy: 0.9378 - val_loss: 0.8796 - val_accuracy: 0.8561 - lr: 0.1000
+
+Epoch 00049: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 49/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5892 - accuracy: 0.9383 - val_loss: 0.8000 - val_accuracy: 0.8827 - lr: 0.1000
+
+Epoch 00050: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 50/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.5868 - accuracy: 0.9390 - val_loss: 0.8122 - val_accuracy: 0.8829 - lr: 0.1000
+
+Epoch 00051: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 51/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5838 - accuracy: 0.9405 - val_loss: 0.8164 - val_accuracy: 0.8828 - lr: 0.1000
+
+Epoch 00052: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 52/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.5847 - accuracy: 0.9397 - val_loss: 0.8577 - val_accuracy: 0.8752 - lr: 0.1000
+
+Epoch 00053: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 53/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.5876 - accuracy: 0.9399 - val_loss: 0.8189 - val_accuracy: 0.8771 - lr: 0.1000
+
+Epoch 00054: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 54/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.5856 - accuracy: 0.9406 - val_loss: 0.7851 - val_accuracy: 0.8930 - lr: 0.1000
+
+Epoch 00055: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 55/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.5857 - accuracy: 0.9415 - val_loss: 0.9482 - val_accuracy: 0.8545 - lr: 0.1000
+
+Epoch 00056: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 56/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5873 - accuracy: 0.9415 - val_loss: 0.8838 - val_accuracy: 0.8713 - lr: 0.1000
+
+Epoch 00057: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 57/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5791 - accuracy: 0.9437 - val_loss: 1.0663 - val_accuracy: 0.8224 - lr: 0.1000
+
+Epoch 00058: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 58/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5778 - accuracy: 0.9444 - val_loss: 0.8215 - val_accuracy: 0.8798 - lr: 0.1000
+
+Epoch 00059: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 59/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.5809 - accuracy: 0.9438 - val_loss: 0.8569 - val_accuracy: 0.8707 - lr: 0.1000
+
+Epoch 00060: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 60/165
+391/391 [==============================] - 79s 202ms/step - loss: 0.5827 - accuracy: 0.9435 - val_loss: 0.8248 - val_accuracy: 0.8723 - lr: 0.1000
+
+Epoch 00061: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 61/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.5892 - accuracy: 0.9431 - val_loss: 0.8703 - val_accuracy: 0.8739 - lr: 0.1000
+
+Epoch 00062: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 62/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.5898 - accuracy: 0.9425 - val_loss: 0.8235 - val_accuracy: 0.8822 - lr: 0.1000
+
+Epoch 00063: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 63/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.5845 - accuracy: 0.9459 - val_loss: 0.7639 - val_accuracy: 0.8939 - lr: 0.1000
+
+Epoch 00064: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 64/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.5874 - accuracy: 0.9450 - val_loss: 0.9151 - val_accuracy: 0.8631 - lr: 0.1000
+
+Epoch 00065: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 65/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.5773 - accuracy: 0.9486 - val_loss: 0.8177 - val_accuracy: 0.8827 - lr: 0.1000
+
+Epoch 00066: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 66/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.5754 - accuracy: 0.9474 - val_loss: 1.0001 - val_accuracy: 0.8461 - lr: 0.1000
+
+Epoch 00067: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 67/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5899 - accuracy: 0.9437 - val_loss: 0.7838 - val_accuracy: 0.8941 - lr: 0.1000
+
+Epoch 00068: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 68/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5768 - accuracy: 0.9487 - val_loss: 0.9603 - val_accuracy: 0.8530 - lr: 0.1000
+
+Epoch 00069: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 69/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5788 - accuracy: 0.9463 - val_loss: 0.7780 - val_accuracy: 0.8963 - lr: 0.1000
+
+Epoch 00070: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 70/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5723 - accuracy: 0.9498 - val_loss: 0.8751 - val_accuracy: 0.8716 - lr: 0.1000
+
+Epoch 00071: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 71/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5767 - accuracy: 0.9481 - val_loss: 0.8513 - val_accuracy: 0.8682 - lr: 0.1000
+
+Epoch 00072: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 72/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5761 - accuracy: 0.9489 - val_loss: 0.7863 - val_accuracy: 0.8946 - lr: 0.1000
+
+Epoch 00073: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 73/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5737 - accuracy: 0.9495 - val_loss: 0.9316 - val_accuracy: 0.8625 - lr: 0.1000
+
+Epoch 00074: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 74/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5731 - accuracy: 0.9484 - val_loss: 0.8872 - val_accuracy: 0.8755 - lr: 0.1000
+
+Epoch 00075: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 75/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5857 - accuracy: 0.9459 - val_loss: 1.3020 - val_accuracy: 0.7919 - lr: 0.1000
+
+Epoch 00076: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 76/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5761 - accuracy: 0.9497 - val_loss: 0.7891 - val_accuracy: 0.8912 - lr: 0.1000
+
+Epoch 00077: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 77/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.5741 - accuracy: 0.9504 - val_loss: 0.8815 - val_accuracy: 0.8697 - lr: 0.1000
+
+Epoch 00078: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 78/165
+391/391 [==============================] - 79s 202ms/step - loss: 0.5739 - accuracy: 0.9504 - val_loss: 0.8242 - val_accuracy: 0.8857 - lr: 0.1000
+
+Epoch 00079: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 79/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.5765 - accuracy: 0.9505 - val_loss: 0.8804 - val_accuracy: 0.8730 - lr: 0.1000
+
+Epoch 00080: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 80/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.5677 - accuracy: 0.9515 - val_loss: 0.7620 - val_accuracy: 0.9012 - lr: 0.1000
+
+Epoch 00081: LearningRateScheduler reducing learning rate to 0.1.
+Epoch 81/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5689 - accuracy: 0.9504 - val_loss: 0.8721 - val_accuracy: 0.8779 - lr: 0.1000
+
+Epoch 00082: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 82/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.5197 - accuracy: 0.9692 - val_loss: 0.6532 - val_accuracy: 0.9347 - lr: 0.0100
+
+Epoch 00083: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 83/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.4756 - accuracy: 0.9831 - val_loss: 0.6393 - val_accuracy: 0.9386 - lr: 0.0100
+
+Epoch 00084: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 84/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.4606 - accuracy: 0.9862 - val_loss: 0.6243 - val_accuracy: 0.9386 - lr: 0.0100
+
+Epoch 00085: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 85/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.4479 - accuracy: 0.9879 - val_loss: 0.6201 - val_accuracy: 0.9406 - lr: 0.0100
+
+Epoch 00086: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 86/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.4363 - accuracy: 0.9898 - val_loss: 0.6183 - val_accuracy: 0.9395 - lr: 0.0100
+
+Epoch 00087: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 87/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.4275 - accuracy: 0.9910 - val_loss: 0.6081 - val_accuracy: 0.9417 - lr: 0.0100
+
+Epoch 00088: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 88/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.4193 - accuracy: 0.9913 - val_loss: 0.6015 - val_accuracy: 0.9425 - lr: 0.0100
+
+Epoch 00089: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 89/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.4102 - accuracy: 0.9932 - val_loss: 0.5921 - val_accuracy: 0.9449 - lr: 0.0100
+
+Epoch 00090: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 90/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.4012 - accuracy: 0.9946 - val_loss: 0.5908 - val_accuracy: 0.9439 - lr: 0.0100
+
+Epoch 00091: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 91/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.3952 - accuracy: 0.9941 - val_loss: 0.5841 - val_accuracy: 0.9455 - lr: 0.0100
+
+Epoch 00092: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 92/165
+391/391 [==============================] - 79s 202ms/step - loss: 0.3886 - accuracy: 0.9943 - val_loss: 0.5841 - val_accuracy: 0.9424 - lr: 0.0100
+
+Epoch 00093: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 93/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.3819 - accuracy: 0.9945 - val_loss: 0.5804 - val_accuracy: 0.9434 - lr: 0.0100
+
+Epoch 00094: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 94/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.3741 - accuracy: 0.9954 - val_loss: 0.5731 - val_accuracy: 0.9437 - lr: 0.0100
+
+Epoch 00095: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 95/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.3687 - accuracy: 0.9954 - val_loss: 0.5681 - val_accuracy: 0.9449 - lr: 0.0100
+
+Epoch 00096: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 96/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.3631 - accuracy: 0.9954 - val_loss: 0.5641 - val_accuracy: 0.9447 - lr: 0.0100
+
+Epoch 00097: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 97/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.3554 - accuracy: 0.9964 - val_loss: 0.5626 - val_accuracy: 0.9448 - lr: 0.0100
+
+Epoch 00098: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 98/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.3496 - accuracy: 0.9966 - val_loss: 0.5606 - val_accuracy: 0.9428 - lr: 0.0100
+
+Epoch 00099: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 99/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.3436 - accuracy: 0.9969 - val_loss: 0.5493 - val_accuracy: 0.9440 - lr: 0.0100
+
+Epoch 00100: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 100/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.3383 - accuracy: 0.9970 - val_loss: 0.5499 - val_accuracy: 0.9438 - lr: 0.0100
+
+Epoch 00101: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 101/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.3335 - accuracy: 0.9967 - val_loss: 0.5460 - val_accuracy: 0.9440 - lr: 0.0100
+
+Epoch 00102: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 102/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.3279 - accuracy: 0.9970 - val_loss: 0.5380 - val_accuracy: 0.9456 - lr: 0.0100
+
+Epoch 00103: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 103/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.3222 - accuracy: 0.9975 - val_loss: 0.5285 - val_accuracy: 0.9457 - lr: 0.0100
+
+Epoch 00104: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 104/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.3174 - accuracy: 0.9972 - val_loss: 0.5276 - val_accuracy: 0.9453 - lr: 0.0100
+
+Epoch 00105: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 105/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.3126 - accuracy: 0.9974 - val_loss: 0.5294 - val_accuracy: 0.9442 - lr: 0.0100
+
+Epoch 00106: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 106/165
+391/391 [==============================] - 78s 199ms/step - loss: 0.3085 - accuracy: 0.9971 - val_loss: 0.5324 - val_accuracy: 0.9433 - lr: 0.0100
+
+Epoch 00107: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 107/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.3030 - accuracy: 0.9977 - val_loss: 0.5200 - val_accuracy: 0.9454 - lr: 0.0100
+
+Epoch 00108: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 108/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2975 - accuracy: 0.9980 - val_loss: 0.5180 - val_accuracy: 0.9444 - lr: 0.0100
+
+Epoch 00109: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 109/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2930 - accuracy: 0.9979 - val_loss: 0.5200 - val_accuracy: 0.9451 - lr: 0.0100
+
+Epoch 00110: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 110/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2894 - accuracy: 0.9977 - val_loss: 0.5068 - val_accuracy: 0.9464 - lr: 0.0100
+
+Epoch 00111: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 111/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2850 - accuracy: 0.9976 - val_loss: 0.5105 - val_accuracy: 0.9446 - lr: 0.0100
+
+Epoch 00112: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 112/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2801 - accuracy: 0.9979 - val_loss: 0.5102 - val_accuracy: 0.9453 - lr: 0.0100
+
+Epoch 00113: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 113/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2761 - accuracy: 0.9979 - val_loss: 0.5132 - val_accuracy: 0.9448 - lr: 0.0100
+
+Epoch 00114: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 114/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2713 - accuracy: 0.9983 - val_loss: 0.5100 - val_accuracy: 0.9454 - lr: 0.0100
+
+Epoch 00115: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 115/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2672 - accuracy: 0.9982 - val_loss: 0.4984 - val_accuracy: 0.9441 - lr: 0.0100
+
+Epoch 00116: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 116/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.2629 - accuracy: 0.9985 - val_loss: 0.4908 - val_accuracy: 0.9461 - lr: 0.0100
+
+Epoch 00117: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 117/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.2582 - accuracy: 0.9986 - val_loss: 0.4922 - val_accuracy: 0.9452 - lr: 0.0100
+
+Epoch 00118: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 118/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2551 - accuracy: 0.9983 - val_loss: 0.4812 - val_accuracy: 0.9480 - lr: 0.0100
+
+Epoch 00119: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 119/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.2511 - accuracy: 0.9985 - val_loss: 0.4909 - val_accuracy: 0.9452 - lr: 0.0100
+
+Epoch 00120: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 120/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.2471 - accuracy: 0.9986 - val_loss: 0.4830 - val_accuracy: 0.9448 - lr: 0.0100
+
+Epoch 00121: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 121/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.2439 - accuracy: 0.9982 - val_loss: 0.4743 - val_accuracy: 0.9457 - lr: 0.0100
+
+Epoch 00122: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 122/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.2400 - accuracy: 0.9984 - val_loss: 0.4723 - val_accuracy: 0.9456 - lr: 0.0100
+
+Epoch 00123: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 123/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2364 - accuracy: 0.9984 - val_loss: 0.4747 - val_accuracy: 0.9451 - lr: 0.0100
+
+Epoch 00124: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 124/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2333 - accuracy: 0.9983 - val_loss: 0.4688 - val_accuracy: 0.9448 - lr: 0.0100
+
+Epoch 00125: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 125/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2292 - accuracy: 0.9986 - val_loss: 0.4603 - val_accuracy: 0.9467 - lr: 0.0100
+
+Epoch 00126: LearningRateScheduler reducing learning rate to 0.01.
+Epoch 126/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2258 - accuracy: 0.9987 - val_loss: 0.4616 - val_accuracy: 0.9474 - lr: 0.0100
+
+Epoch 00127: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 127/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2234 - accuracy: 0.9987 - val_loss: 0.4595 - val_accuracy: 0.9489 - lr: 0.0010
+
+Epoch 00128: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 128/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.2225 - accuracy: 0.9990 - val_loss: 0.4586 - val_accuracy: 0.9487 - lr: 0.0010
+
+Epoch 00129: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 129/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.2223 - accuracy: 0.9990 - val_loss: 0.4564 - val_accuracy: 0.9493 - lr: 0.0010
+
+Epoch 00130: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 130/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.2223 - accuracy: 0.9987 - val_loss: 0.4552 - val_accuracy: 0.9489 - lr: 0.0010
+
+Epoch 00131: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 131/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2218 - accuracy: 0.9989 - val_loss: 0.4554 - val_accuracy: 0.9487 - lr: 0.0010
+
+Epoch 00132: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 132/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.2214 - accuracy: 0.9988 - val_loss: 0.4552 - val_accuracy: 0.9487 - lr: 0.0010
+
+Epoch 00133: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 133/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.2207 - accuracy: 0.9991 - val_loss: 0.4543 - val_accuracy: 0.9483 - lr: 0.0010
+
+Epoch 00134: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 134/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2210 - accuracy: 0.9987 - val_loss: 0.4535 - val_accuracy: 0.9497 - lr: 0.0010
+
+Epoch 00135: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 135/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2199 - accuracy: 0.9990 - val_loss: 0.4550 - val_accuracy: 0.9489 - lr: 0.0010
+
+Epoch 00136: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 136/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.2194 - accuracy: 0.9991 - val_loss: 0.4551 - val_accuracy: 0.9489 - lr: 0.0010
+
+Epoch 00137: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 137/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2187 - accuracy: 0.9993 - val_loss: 0.4548 - val_accuracy: 0.9491 - lr: 0.0010
+
+Epoch 00138: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 138/165
+391/391 [==============================] - 78s 199ms/step - loss: 0.2186 - accuracy: 0.9992 - val_loss: 0.4540 - val_accuracy: 0.9492 - lr: 0.0010
+
+Epoch 00139: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 139/165
+391/391 [==============================] - 78s 199ms/step - loss: 0.2183 - accuracy: 0.9993 - val_loss: 0.4525 - val_accuracy: 0.9495 - lr: 0.0010
+
+Epoch 00140: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 140/165
+391/391 [==============================] - 78s 199ms/step - loss: 0.2182 - accuracy: 0.9991 - val_loss: 0.4525 - val_accuracy: 0.9493 - lr: 0.0010
+
+Epoch 00141: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 141/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2176 - accuracy: 0.9991 - val_loss: 0.4529 - val_accuracy: 0.9494 - lr: 0.0010
+
+Epoch 00142: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 142/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2173 - accuracy: 0.9992 - val_loss: 0.4514 - val_accuracy: 0.9493 - lr: 0.0010
+
+Epoch 00143: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 143/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.2167 - accuracy: 0.9992 - val_loss: 0.4521 - val_accuracy: 0.9488 - lr: 0.0010
+
+Epoch 00144: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 144/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2164 - accuracy: 0.9992 - val_loss: 0.4514 - val_accuracy: 0.9492 - lr: 0.0010
+
+Epoch 00145: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 145/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.2163 - accuracy: 0.9991 - val_loss: 0.4514 - val_accuracy: 0.9487 - lr: 0.0010
+
+Epoch 00146: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 146/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.2156 - accuracy: 0.9992 - val_loss: 0.4505 - val_accuracy: 0.9493 - lr: 0.0010
+
+Epoch 00147: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 147/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.2154 - accuracy: 0.9992 - val_loss: 0.4494 - val_accuracy: 0.9493 - lr: 0.0010
+
+Epoch 00148: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 148/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2151 - accuracy: 0.9994 - val_loss: 0.4500 - val_accuracy: 0.9491 - lr: 0.0010
+
+Epoch 00149: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 149/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.2150 - accuracy: 0.9990 - val_loss: 0.4481 - val_accuracy: 0.9489 - lr: 0.0010
+
+Epoch 00150: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 150/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.2147 - accuracy: 0.9991 - val_loss: 0.4488 - val_accuracy: 0.9488 - lr: 0.0010
+
+Epoch 00151: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 151/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.2139 - accuracy: 0.9994 - val_loss: 0.4476 - val_accuracy: 0.9489 - lr: 0.0010
+
+Epoch 00152: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 152/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2135 - accuracy: 0.9994 - val_loss: 0.4486 - val_accuracy: 0.9488 - lr: 0.0010
+
+Epoch 00153: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 153/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2129 - accuracy: 0.9995 - val_loss: 0.4468 - val_accuracy: 0.9491 - lr: 0.0010
+
+Epoch 00154: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 154/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2131 - accuracy: 0.9994 - val_loss: 0.4469 - val_accuracy: 0.9487 - lr: 0.0010
+
+Epoch 00155: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 155/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.2126 - accuracy: 0.9992 - val_loss: 0.4475 - val_accuracy: 0.9487 - lr: 0.0010
+
+Epoch 00156: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 156/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2121 - accuracy: 0.9993 - val_loss: 0.4471 - val_accuracy: 0.9493 - lr: 0.0010
+
+Epoch 00157: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 157/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.2122 - accuracy: 0.9993 - val_loss: 0.4463 - val_accuracy: 0.9488 - lr: 0.0010
+
+Epoch 00158: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 158/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.2116 - accuracy: 0.9993 - val_loss: 0.4476 - val_accuracy: 0.9496 - lr: 0.0010
+
+Epoch 00159: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 159/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.2113 - accuracy: 0.9993 - val_loss: 0.4456 - val_accuracy: 0.9488 - lr: 0.0010
+
+Epoch 00160: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 160/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2112 - accuracy: 0.9991 - val_loss: 0.4466 - val_accuracy: 0.9490 - lr: 0.0010
+
+Epoch 00161: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 161/165
+391/391 [==============================] - 78s 201ms/step - loss: 0.2107 - accuracy: 0.9992 - val_loss: 0.4455 - val_accuracy: 0.9491 - lr: 0.0010
+
+Epoch 00162: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 162/165
+391/391 [==============================] - 79s 201ms/step - loss: 0.2101 - accuracy: 0.9995 - val_loss: 0.4459 - val_accuracy: 0.9495 - lr: 0.0010
+
+Epoch 00163: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 163/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2098 - accuracy: 0.9993 - val_loss: 0.4458 - val_accuracy: 0.9489 - lr: 0.0010
+
+Epoch 00164: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 164/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2093 - accuracy: 0.9994 - val_loss: 0.4459 - val_accuracy: 0.9486 - lr: 0.0010
+
+Epoch 00165: LearningRateScheduler reducing learning rate to 0.001.
+Epoch 165/165
+391/391 [==============================] - 78s 200ms/step - loss: 0.2094 - accuracy: 0.9992 - val_loss: 0.4454 - val_accuracy: 0.9492 - lr: 0.0010
+
+
+>Final Accuracy of Trained Model: 94.920
